@@ -1,0 +1,101 @@
+html {
+    height: 100%;
+}
+
+
+body {
+  min-height: 94%;
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: #f5feff;
+  color: #FDFFFC;
+  text-align: center;
+  border: 200px solid #e9f5f4;
+  border-top: 0px;
+  border-bottom: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+}
+/* #c3e09f */
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  color: black;
+  text-align: center;
+}
+
+li {
+  color: black;
+}
+
+h2 {
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  color: #ff8324;
+  font-size: 40px;
+}
+
+label {
+  color: black;
+}
+
+#Btn1 {
+  background-color: gold;
+  margin-left: 375px;
+  margin-right: 375px;
+  text-align: center;
+  color: #ff8324;
+  border-radius: 25px;
+}
+
+#Btn2 {
+  background-color: gold;
+  margin-left: 350px;
+  margin-right: 350px;
+  text-align: center;
+  color: #ff8324;
+  border-radius: 25px;
+}
+
+.form {
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: left;
+}
+
+.loginForm {
+  margin-right: 100px;
+}
+
+.registerForm {
+  margin-left: 100px;
+}
+
+.required {
+  color: red;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+
+input {
+  width: 200px;
+}
+
+input[type="submit"] {
+  width: 100px;
+}

@@ -1,22 +1,20 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="stylesheet" th:href="@{/css/account.css}">
 </head>
-
 <body>
 
-    <div class="container text-white">
+ 	<div class="container text-white">
         <div class="row my-0 mt-5">
             <div class="col-md-4">
                 <h1 class="name">Share Fest</h1>
@@ -33,8 +31,8 @@
         </div>
     </div>
 
-    <header>
-        <div class="container">
+	<header>
+        <div class="container mt-5">
             <nav class="navbar navbar-expand-lg navbar-dark rounded-pill">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="home">Home</a>
@@ -87,83 +85,58 @@
                                     <li><a class="dropdown-item" href="https://www.sharefestwillcounty.org/partners">Partners</a></li>
                                 </ul>
                             </li>
+                            <li class="nav navbar-text">
+								Welcome <span sec:authentication="principal.username"> User</span>
+							</li>
+                            <li class="nav navbar-text">
+								<ul sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></ul>
+							</li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-
+    
     <main>
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Register to the Sharefest Store</h1>
-                        <p>Become a ShareFest Store Member and help out the community!</p>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href = 'stores/pantry_store_registration';">Register!
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/SortandPackEvent_HEIC.jpg" alt="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <img id="vol" src="/images/April10Event_JPG.jpg" alt="">
-                </div>
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Register to become a Member</h1>
-                        <p>Become a Member and enjoy the benefits of ShareFest Store. Be able to look at available foods from panty stores all around.</p>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href = 'members/member_registration';">Register!
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Login to the Sharefest Store</h1>
-                        <p>Click "Login" to login to the ShareFest store and help out the community.
-                        </p>
-                        <button type="button" class="btn btn-success" onclick="window.location.href = 'stores/pantry_store_login';">Login
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/IMG_1040_HEIC.jpg" alt="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <img src="/images/volunteers_JPG.jpg" alt="">
-                </div>
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Login as a Member</h1>
-                        <p>Login and get the opportunity to look at available foods from pantry stores all around.</p>
-                        <button type="button" class="btn btn-success" onclick="window.location.href = 'members/member_login';">Login
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Future Events</h1>
-                        <p>Look on the right for important future events and announcements.</p>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/Recyclepalooza1.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="bg-dark text-white pt-3 pb-6">
+	
+	<br>
+	<br>
+	
+	<div class="container my-5">
+	<h2>Food Availability</h2>
+       <table class="table table-success table-bordered border-secondary table-striped ">
+		<thead class="table-dark">
+			<tr>
+				<th>Food Type</th>
+				<th>Food Name</th>
+				<th>Unit</th>
+				<th>Value</th>
+				<th>Weight</th>
+				<th>Quantity</th>
+<!-- 				<th>Location</th> -->
+			</tr>
+		</thead>
+		
+		<tbody>
+			<th:block th:each="tempFoods : ${foods}">
+					<tr>
+					<td th:text="${tempFoods.foodType}" />
+					<td th:text="${tempFoods.foodName}" />
+					<td th:text="${tempFoods.unit}" />
+					<td th:text="${tempFoods.value}" />
+					<td th:text="${tempFoods.weight}" />
+					<td th:text="${tempFoods.quantity}" />
+<!-- 					<span th:with="storeId=${tempFoods.stor}"> -->
+<!-- 					<td th:text="${#strings.toString(storeId)}" /> -->
+					</tr>
+		    </th:block>	
+		</tbody>
+		</table>
+     </div>
+	</main>
+	
+	    <footer class="bg-dark text-white pt-3 pb-6">
         <div class="container text-center text-md-start">
             <div class="row text-center text-md-start mb-4 mt-4">
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
@@ -223,7 +196,7 @@
 
             <div class="d-flex align-items-center text-md-start">
                 <div class="col-md-7 col-lg-8">
-                    <p> Copyright Â©2022 All rights reserved by: <a href="#" style="text-decoration: none;">
+                    <p> Copyright ©2022 All rights reserved by: <a href="#" style="text-decoration: none;">
                         <strong class="text-warning">ShareFest Will County</strong>
                     </a></p>
                 </div>
@@ -253,10 +226,11 @@
 
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+	</script>
 </body>
-
 </html>

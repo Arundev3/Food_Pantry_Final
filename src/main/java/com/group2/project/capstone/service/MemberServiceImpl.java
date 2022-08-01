@@ -1,5 +1,6 @@
 package com.group2.project.capstone.service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -70,7 +71,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		Member user = new Member(registrationDto.getFirstName(), registrationDto.getLastName(),
 				    registrationDto.getEmail(), passwordEncoder.encode(registrationDto.getPassword()),
-				    Arrays.asList(new Role("ROLE_USER")));
+				    LocalDate.parse(registrationDto.getDob()), registrationDto.getEthnicity(), registrationDto.getAddress1(),
+				    registrationDto.getAddress2(), registrationDto.getCity(), registrationDto.getState(),
+				    registrationDto.getZip(), registrationDto.getCountry(), registrationDto.getPhone(), 
+				    registrationDto.getPhoneType(), registrationDto.getFamilyMembers(), registrationDto.getNotification(), Arrays.asList(new Role("ROLE_USER")));
 		
 		return memberRepository.save(user);
 	}

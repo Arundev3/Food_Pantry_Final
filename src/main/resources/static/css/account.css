@@ -19,12 +19,10 @@ body {
 
 img {
     border-radius: 50%;
-    border: 30px solid #ffc404;
 }
 
 #top {
     border-radius: 0%;
-    border: 0px
 }
 
 footer {
@@ -45,6 +43,16 @@ footer {
     margin-left: 40%;
 }
 
-.contact-font {
-    font-size: 0.875rem;
+h2{
+	text-align: center;
+}
+
+.btn-info {
+	diplay: block;
+	margin: auto;
+}
+
+.btn-danger {
+	diplay: block;
+	margin: auto;
 }

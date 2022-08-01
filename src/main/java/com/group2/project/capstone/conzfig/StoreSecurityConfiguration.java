@@ -48,18 +48,18 @@ public class StoreSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.requestMatcher(new AntPathRequestMatcher("/stores/PantryStore_Login**"))
+		http.requestMatcher(new AntPathRequestMatcher("/stores/pantry_store_login**"))
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers(
-				"/stores/PantryStore_Login**", 
+				"/stores/pantry_store_login**", 
 					"/js/**",
 					"/css/**",
 					"/img/**").permitAll()
 		.and()
 		.formLogin()
-		.loginPage("/stores/PantryStore_Login")
-		.defaultSuccessUrl("/welcome")
+		.loginPage("/stores/pantry_store_login")
+		.defaultSuccessUrl("/pantry_store_account")
 		.permitAll()
 		.and()
 		.logout()

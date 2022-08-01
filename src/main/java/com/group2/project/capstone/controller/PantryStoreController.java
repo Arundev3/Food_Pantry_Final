@@ -36,34 +36,27 @@ public class PantryStoreController {
 		return new StoreRegistrationDto();
 	}
 	
-	
-	@GetMapping("/PantryStore_Registration")
-	public String Store_Registration(Model theModel) {
+	@GetMapping("/pantry_store_registration")
+	public String ShareFest_Store_Registration(Model theModel) {
 		
 		// create model attribute to bind form data
 		Store theStore = new Store();
 		
 		theModel.addAttribute("store", theStore);
 		
-		return "stores/PantryStore_Registration";
+		return "stores/pantry_store_registration";
 	}
 	
-	@GetMapping("/PantryStore_Login")
-	public String Store_Login() {
+	@GetMapping("/pantry_store_login")
+	public String ShareFest_Store_Login() {
 		
-		return "stores/PantryStore_Login";
+		return "stores/pantry_store_login";
 	}
 	
-	@GetMapping("/LoginOrRegistration")
-	public String loginOrRegistration() {
-		return "stores/LoginOrRegistration";
-	}
-	
-	
-	@PostMapping("/PantryStore_Registration")
-	public String registerStore(@ModelAttribute("store") StoreRegistrationDto registrationDto) {
+	@PostMapping("/pantry_store_registration")
+	public String ShareFest_Store_Register(@ModelAttribute("store") StoreRegistrationDto registrationDto) {
 		
 		storeService.save(registrationDto);
-		return "redirect:/stores/PantryStore_Registration?success";
+		return "redirect:/stores/pantry_store_registration?success";
 	}
 }

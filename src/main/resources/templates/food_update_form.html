@@ -1,22 +1,26 @@
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" th:href="@{/css/account.css}">
+	<title>Save Food</title>
+	
 </head>
 
 <body>
 
-    <div class="container text-white">
+ 	<div class="container text-white">
         <div class="row my-0 mt-5">
             <div class="col-md-4">
                 <h1 class="name">Share Fest</h1>
@@ -33,7 +37,7 @@
         </div>
     </div>
 
-    <header>
+	<header>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark rounded-pill">
                 <div class="container-fluid">
@@ -94,74 +98,74 @@
         </div>
     </header>
 
-    <main>
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Register to the Sharefest Store</h1>
-                        <p>Become a ShareFest Store Member and help out the community!</p>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href = 'stores/pantry_store_registration';">Register!
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/SortandPackEvent_HEIC.jpg" alt="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <img id="vol" src="/images/April10Event_JPG.jpg" alt="">
-                </div>
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Register to become a Member</h1>
-                        <p>Become a Member and enjoy the benefits of ShareFest Store. Be able to look at available foods from panty stores all around.</p>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href = 'members/member_registration';">Register!
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Login to the Sharefest Store</h1>
-                        <p>Click "Login" to login to the ShareFest store and help out the community.
-                        </p>
-                        <button type="button" class="btn btn-success" onclick="window.location.href = 'stores/pantry_store_login';">Login
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/IMG_1040_HEIC.jpg" alt="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <img src="/images/volunteers_JPG.jpg" alt="">
-                </div>
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Login as a Member</h1>
-                        <p>Login and get the opportunity to look at available foods from pantry stores all around.</p>
-                        <button type="button" class="btn btn-success" onclick="window.location.href = 'members/member_login';">Login
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="margin">
-                        <h1>Future Events</h1>
-                        <p>Look on the right for important future events and announcements.</p>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <img src="/images/Recyclepalooza1.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </main>
+
+	<main>
+		<div class="container">
+			<h3>Food Directory</h3>
+			<hr>
+			
+			<p class="h4 mb-4">Save Food</p>
+			
+			<form action="#" th:action="@{/save}"
+							 th:object="${food}" method="POST">
+							 
+				<!-- Add hidden form field to handle update -->
+				<input type="hidden" th:field="*{id}"/>
+				
+				<input type="text" th:field="*{foodType}"
+				        class="form-control mb-4 col-4" placeholder="Type">
+				
+				<input type="text" th:field="*{foodName}"
+						class="form-control mb-4 col-4" placeholder="Name">
+						
+				<input type="text" th:field="*{unit}"
+						class="form-control mb-4 col-4" placeholder="Unit">
+						
+				<input type="number" th:field="*{value}"
+						class="form-control mb-4 col-4" placeholder="Value">		
+						
+				<input type="number" th:field="*{weight}"
+						class="form-control mb-4 col-4" placeholder="Weight">
+						
+			    <input type="number" th:field="*{quantity}"
+						class="form-control mb-4 col-4" placeholder="Quantity">
+						
+				<input type="text" th:field="*{status}"
+						class="form-control mb-4 col-4" placeholder="Status">
+				
+				<button type="submit" class="btn btn-info col-2">Save</button>
+				
+			</form>
+			
+	<!-- 		  <div class="form" style="display: flex;"> -->
+				
+	<!--         <form class="registerForm" action="#" th:action="@{/welcome}" -->
+	<!-- 						 th:object="${food}" method="POST"> -->
+	<!--           <h2>Register</h2> -->
+				
+	<!--           <label for="fname" class="control-label">Food Name <span class="required">*</span></label><br> -->
+	<!--           <input type="text" id="fname" th:field="*{foodName}" -->
+	<!-- 					class="form-control mb-4 col-4" placeholder="Food name" required autofocus="autofocus"><br> -->
+	
+	<!--           <label for="lname" class="control-label">Description <span class="required">*</span></label><br> -->
+	<!--           <input type="text" id="lname" th:field="*{description}" -->
+	<!-- 					class="form-control mb-4 col-4" placeholder="Description" required autofocus="autofocus"><br> -->
+	
+	<!--           <label for="mail" class="control-label">Quantity <span class="required">*</span></label><br> -->
+	<!--           <input type="number" id="mail" th:field="*{quantity}" -->
+	<!-- 					class="form-control mb-4 col-4" placeholder="Email" required autofocus="autofocus"><br> -->
+	
+	
+	<!--           <button type="submit" class="btn btn-info col-2">ADD</button> -->
+	          
+	<!--         </form> -->
+	<!--        </div> -->
+		
+			<hr>
+			<a th:href="@{/pantry_store_account}">Back to Pantry Store</a>
+			
+		</div>
+	</main>
 
     <footer class="bg-dark text-white pt-3 pb-6">
         <div class="container text-center text-md-start">
@@ -254,9 +258,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

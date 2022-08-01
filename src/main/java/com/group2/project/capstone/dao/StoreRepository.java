@@ -11,7 +11,7 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
 	
 	// add a method to sort by last name 
 	// Its part of Spring Data JPA feature
-	public List<Store> findAllByOrderByStoreName();
+	public List<Store> findAllByOrderByFirstName();
 	
 	Store findByEmail(String email);
 

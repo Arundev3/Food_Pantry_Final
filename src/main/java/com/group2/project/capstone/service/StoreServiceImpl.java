@@ -1,5 +1,6 @@
 package com.group2.project.capstone.service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.group2.project.capstone.dao.MemberRepository;
 import com.group2.project.capstone.dao.StoreRepository;
+import com.group2.project.capstone.entity.Food;
 import com.group2.project.capstone.entity.Member;
 import com.group2.project.capstone.entity.Role;
 import com.group2.project.capstone.entity.Store;
@@ -25,6 +27,11 @@ import com.group2.project.capstone.web.dto.StoreRegistrationDto;
 
 @Service 
 public class StoreServiceImpl implements StoreService {
+	
+	public StoreServiceImpl() {
+		
+	}
+	
 
 	@Autowired
 	private StoreRepository storeRepository;
@@ -41,7 +48,7 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public List<Store> findAll() {
-		return storeRepository.findAllByOrderByStoreName();
+		return storeRepository.findAllByOrderByFirstName();
 	}
 
 	@Override
@@ -71,9 +78,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public Store save(StoreRegistrationDto registrationDto) {
 		
-		Store store = new Store(registrationDto.getStoreName(), registrationDto.getEmail(), 
-				passwordEncoder.encode(registrationDto.getPassword()),
-			    Arrays.asList(new Role("ROLE_STORE")));
+		Store store = new Store(registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getEmail(), 
+				passwordEncoder.encode(registrationDto.getPassword()), LocalDate.parse(registrationDto.getDob()), registrationDto.getGender(),
+				registrationDto.getEthnicity(), registrationDto.getSize(), registrationDto.getAddress1(), registrationDto.getAddress2(),
+				registrationDto.getCity(), registrationDto.getState(), registrationDto.getZip(), registrationDto.getCountry(),
+				registrationDto.getPhone(), registrationDto.getPhoneType(), registrationDto.getFamilyMembers(),
+				registrationDto.getIncome(), Arrays.asList(new Role("ROLE_STORE")), Arrays.asList(new Food()));
 	
 		return storeRepository.save(store);
 	}

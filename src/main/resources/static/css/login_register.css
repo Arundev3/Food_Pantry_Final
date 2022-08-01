@@ -41,10 +41,18 @@ footer {
     color: "#335CD6";
 }
 
-.btn {
-    margin-left: 40%;
-}
-
 .contact-font {
     font-size: 0.875rem;
 }
+
+.form-select {
+    /* margin-top: 0.5rem; */
+    height: 58px;
+}
+
+.empty-space {
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+

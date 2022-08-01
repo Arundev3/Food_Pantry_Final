@@ -37,31 +37,26 @@ public class MemberController {
 		return new MemberRegistrationDto();
 	}
 	
-	@GetMapping("/Community_Registration")
-	public String Community_Registration(Model theModel) {
+	@GetMapping("/member_registration")
+	public String Memeber_Registration(Model theModel) {
 		
 		// create model attribute to bind form data
 		Member theMember = new Member();
 		
 		theModel.addAttribute("member", theMember);
 		
-		return "members/Community_Registration";
+		return "members/member_registration";
 	}
 	
-	@GetMapping("/Community_Login")
-	public String login() {
-		return "members/Community_Login";
+	@GetMapping("/member_login")
+	public String Member_login() {
+		return "members/member_login";
 	}
 	
-	@GetMapping("/LoginOrRegistration")
-	public String loginOrRegistration() {
-		return "members/LoginOrRegistration";
-	}
-	
-	@PostMapping("/Community_Registration")
-	public String registerMember(@ModelAttribute("member") MemberRegistrationDto registrationDto) {
+	@PostMapping("/member_registration")
+	public String Register_Member(@ModelAttribute("member") MemberRegistrationDto registrationDto) {
 		
 		memberService.save(registrationDto);
-		return "redirect:/members/Community_Registration?success";
+		return "redirect:/members/member_registration?success";
 	}
 }
